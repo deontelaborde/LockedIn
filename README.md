@@ -17,7 +17,7 @@
 
 ## **_Description_**
 
-I cannot stand calling around or driving around all day looking for a mechanic or a shop to address my car's needs. Wouldn't it be nice to have a resource to find car businesses that either specilizes in a skill or specific car brands, or even just a general jack of all trades at a click of a button. There you can see availability and set appointments to have you and your car `LockedIn`
+I cannot stand calling around or driving around all day looking for a mechanic or a shop to address my car's needs. Wouldn't it be nice to have a resource to find car businesses that either specilizes in a skill or specific car brands, or even just a general jack of all trades at a click of a button. There you can see availability and set appointments to have you and your car, `LockedIn`
 
 ---
 
@@ -33,9 +33,14 @@ Backend
 - Express
 - Node.js
 
-Database
-- AWS
+Database Options
+- PostegreSQL
+- DynamoDB
 
+Deployment Options
+
+  - Heroku
+  - AWS
 
 ### **_Component Hierarchy Diagram:_**
 
