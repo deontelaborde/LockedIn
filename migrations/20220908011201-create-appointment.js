@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('appointments', {
@@ -19,21 +19,27 @@ module.exports = {
       },
       customerId: {
         type: Sequelize.INTEGER,
-        onDelete:'CASCADE',
-        references:{
-          model:'customers',
-          key:'id'
+        onDelete: 'CASCADE',
+        references: {
+          model: 'customers',
+          key: 'id'
         }
       },
       carId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'cars',
+          key: 'id'
+        }
       },
       businessId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'businesses',
-          key: 'id'}
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -43,9 +49,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('appointments');
+    await queryInterface.dropTable('appointments')
   }
-};
+}

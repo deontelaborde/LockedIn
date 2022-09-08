@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Appointment.belongsTo(models.Business,{foreignKey:'businessId'})
       Appointment.belongsTo(models.Customer,{foreignKey:'customerId'})
+      Appointment.belongsTo(models.Car,{foreignKey:'carId'})
 
     }
   }
@@ -28,7 +29,14 @@ module.exports = (sequelize, DataTypes) => {
         key:'id'
       }
     },
-    carId: DataTypes.INTEGER,
+    carId: {
+      type: DataTypes.INTEGER,
+      onDelete:'CASCADE',
+      references:{
+        model:'cars',
+        key:'id'
+      }
+    },
     businessId: {
       type: DataTypes.INTEGER,
       onDelete:'CASCADE',
