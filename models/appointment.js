@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Appointment.belongsTo(models.Business,{foreignKey:'businessId'})
+      Appointment.belongsTo(models.Customer,{foreignKey:'customerId'})
 
     }
   }
@@ -19,7 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATEONLY,
     time: DataTypes.TIME,
     reasonForVisit: DataTypes.TEXT,
-    customerId: DataTypes.INTEGER,
+    customerId: {
+      type: DataTypes.INTEGER,
+      onDelete:'CASCADE',
+      references:{
+        model:'customers',
+        key:'id'
+      }
+    },
     carId: DataTypes.INTEGER,
     businessId: {
       type: DataTypes.INTEGER,

@@ -18,7 +18,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       customerId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete:'CASCADE',
+        references:{
+          model:'customers',
+          key:'id'
+        }
       },
       carId: {
         type: Sequelize.INTEGER
