@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Car.belongsTo(models.Customer,{foreignKey:'customerId'});
-      Car.hasMany(models.Appointment,{foreignKey:'carId'})
+      Car.belongsTo(models.Customer,{foreignKey:'customer_id'});
+      Car.hasMany(models.Appointment,{foreignKey:'car_id'})
       
     }
   }
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     model: DataTypes.STRING,
     color: DataTypes.STRING,
     year: DataTypes.INTEGER,
-    customerId: {
+    customer_id: {
       type: DataTypes.INTEGER,
       onDelete:'CASCADE',
       references:{

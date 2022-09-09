@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Appointment.belongsTo(models.Business,{foreignKey:'businessId'});
-      Appointment.belongsTo(models.Customer,{foreignKey:'customerId'});
-      Appointment.belongsTo(models.Car,{foreignKey:'carId'})
+      Appointment.belongsTo(models.Business,{foreignKey:'business_id'});
+      Appointment.belongsTo(models.Customer,{foreignKey:'customer_id'});
+      Appointment.belongsTo(models.Car,{foreignKey:'car_id'})
 
     }
   }
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATEONLY,
     time: DataTypes.TIME,
     reasonForVisit: DataTypes.TEXT,
-    customerId: {
+    customer_id: {
       type: DataTypes.INTEGER,
       onDelete:'CASCADE',
       references:{
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         key:'id'
       }
     },
-    carId: {
+    car_id: {
       type: DataTypes.INTEGER,
       onDelete:'CASCADE',
       references:{
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         key:'id'
       }
     },
-    businessId: {
+    business_id: {
       type: DataTypes.INTEGER,
       onDelete:'CASCADE',
       references:{
