@@ -9,6 +9,18 @@ const GetBusinesses = async (req, res) => {
   }
 }
 
+const GetBusinessById = async (req, res) => {
+  console.log(req.params)
+  try {
+    const business = await Business.findByPk(req.params.business_id, {
+    })
+    res.send(business)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
-  GetBusinesses
+  GetBusinesses,
+  GetBusinessById
 }
