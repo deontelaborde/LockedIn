@@ -30,7 +30,16 @@ const UpdateCar = async (req, res) => {
     throw error
   }
 }
-
+const DeleteCar = async (req, res) => {
+  try {
+    
+    let carId = parseInt(req.params.car_id)
+    await Car.destroy({ where: { id: carId } })
+    res.send({ message: `Deleted user with an id of ${carId}` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetCars,
