@@ -33,10 +33,20 @@ const UpdateCustomer = async (req, res) => {
     throw error
   }
 }
-
+const DeleteCustomer = async (req, res) => {
+  try {
+    
+    let customerId = parseInt(req.params.customer_id)
+    await Customer.destroy({ where: { id: customerId } })
+    res.send({ message: `Deleted user with an id of ${customerId}` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetCustomers,
   GetCustomerById,
-  UpdateCustomer
+  UpdateCustomer,
+  DeleteCustomer
 }
