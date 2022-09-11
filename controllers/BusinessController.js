@@ -20,7 +20,21 @@ const GetBusinessById = async (req, res) => {
   }
 }
 
+const UpdateBusiness = async (req, res) => {
+  try {
+    let businessId = parseInt(req.params.business_id)
+    let updatedBusiness = await Business.update(req.body, {
+      where: { id: businessId },
+      returning: true
+    })
+    res.send(updatedBusiness)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetBusinesses,
-  GetBusinessById
+  GetBusinessById,
+  UpdateBusiness
 }
