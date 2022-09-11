@@ -18,9 +18,23 @@ const GetCarById = async (req, res) => {
     throw error
   }
 }
+const UpdateCar = async (req, res) => {
+  try {
+    let carId = parseInt(req.params.car_id)
+    let updatedCar = await Car.update(req.body, {
+      where: { id: carId },
+      returning: true
+    })
+    res.send(updatedCar)
+  } catch (error) {
+    throw error
+  }
+}
 
 
 module.exports = {
   GetCars,
-  GetCarById
+  GetCarById,
+  UpdateCar,
+  DeleteCar
 }
