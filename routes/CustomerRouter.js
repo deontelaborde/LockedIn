@@ -3,6 +3,9 @@ const controller = require('../controllers/CustomerController')
 
 
 Router.get('/', controller.GetCustomers)
-Router.get('/:id', controller.GetCustomerById)
+
+Router.get('/:customer_id', controller.GetCustomerById)
+Router.put('/:customer_id', controller.UpdateCustomer)
+
 
 module.exports = Router

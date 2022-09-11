@@ -13,10 +13,22 @@ const GetCustomers = async (req, res) => {
 const GetCustomerById = async (req, res) => {
   console.log(req.params)
   try {
-    const customer = await Customer.findByPk(req.params.id, {
+    const customer = await Customer.findByPk(req.params.customer_id, {
       include: [{ model: Car }]
     })
     res.send(customer)
+  } catch (error) {
+    throw error
+  }
+}
+const UpdateCustomer = async (req, res) => {
+  try {
+    let customerId = parseInt(req.params.customer_id)
+    let updatedCustomer = await Customer.update(req.body, {
+      where: { id: customerId },
+      returning: true
+    })
+    res.send(updatedCustomer)
   } catch (error) {
     throw error
   }
@@ -25,5 +37,6 @@ const GetCustomerById = async (req, res) => {
 
 module.exports = {
   GetCustomers,
-  GetCustomerById
+  GetCustomerById,
+  UpdateCustomer
 }
