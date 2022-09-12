@@ -91,7 +91,10 @@ const LoginCustomer = async (req, res) => {
     })
     if (
       customer &&
-      (await middleware.comparePassword(customer.passwordDigest, req.body.password))
+      (await middleware.comparePassword(
+        customer.passwordDigest,
+        req.body.password
+      ))
     ) {
       let payload = {
         id: customer.id,
@@ -110,7 +113,6 @@ const CheckSession = async (req, res) => {
   const { payload } = res.locals
   res.send(payload)
 }
-
 
 module.exports = {
   GetCustomers,

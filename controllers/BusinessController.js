@@ -13,8 +13,7 @@ const GetBusinesses = async (req, res) => {
 const GetBusinessById = async (req, res) => {
   console.log(req.params)
   try {
-    const business = await Business.findByPk(req.params.business_id, {
-    })
+    const business = await Business.findByPk(req.params.business_id, {})
     res.send(business)
   } catch (error) {
     throw error
@@ -35,7 +34,6 @@ const UpdateBusiness = async (req, res) => {
 }
 const DeleteBusiness = async (req, res) => {
   try {
-    
     let businessId = parseInt(req.params.business_id)
     await Business.destroy({ where: { id: businessId } })
     res.send({ message: `Deleted user with an id of ${businessId}` })
@@ -77,13 +75,16 @@ const LoginBusiness = async (req, res) => {
   try {
     const business = await Business.findOne({
       where: {
-         email: req.body.email
+        email: req.body.email
       },
       raw: true
     })
     if (
       business &&
-      (await middleware.comparePassword(business.passwordDigest, req.body.password))
+      (await middleware.comparePassword(
+        business.passwordDigest,
+        req.body.password
+      ))
     ) {
       let payload = {
         id: business.id,

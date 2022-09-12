@@ -13,12 +13,6 @@ Router.put(
   middleware.verifyToken,
   controller.UpdateCustomer
 )
-Router.put(
-  '/:customer_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.UpdateCustomer
-)
 Router.delete(
   '/:customer_id',
   middleware.stripToken,
