@@ -90,8 +90,8 @@ const LoginCustomer = async (req, res) => {
       raw: true
     })
     if (
-      user &&
-      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+      customer &&
+      (await middleware.comparePassword(customer.passwordDigest, req.body.password))
     ) {
       let payload = {
         id: customer.id,
