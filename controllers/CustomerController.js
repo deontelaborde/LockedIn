@@ -78,11 +78,40 @@ const RegisterCustomer = async (req, res) => {
     throw error
   }
 }
+const LoginCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findOne({
+      where: {
+        // [Op.or]: [
+        // { email: req.body.email },
+        username: req.body.username
+        // ]
+      },
+      raw: true
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      let payload = {
+        id: customer.id,
+        username: customer.username,
+        email: customer.email
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetCustomers,
   GetCustomerById,
   UpdateCustomer,
   DeleteCustomer,
-  RegisterCustomer
+  RegisterCustomer,
+  LoginCustomer
 }
