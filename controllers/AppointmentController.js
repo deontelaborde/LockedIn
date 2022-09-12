@@ -33,9 +33,20 @@ const UpdateAppointment= async (req, res) => {
     throw error
   }
 }
+const DeleteAppointment = async (req, res) => {
+  try {
+    
+    let appointmentId = parseInt(req.params.appointment_id)
+    await Appointment.destroy({ where: { id: appointmentId } })
+    res.send({ message: `Deleted user with an id of ${appointmentId}` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetAppointments,
   GetAppointmentById,
-  UpdateAppointment
+  UpdateAppointment,
+  DeleteAppointment
 }
