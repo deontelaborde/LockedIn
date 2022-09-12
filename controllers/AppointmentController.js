@@ -9,6 +9,18 @@ const GetAppointments = async (req, res) => {
   }
 }
 
+const GetAppointmentById = async (req, res) => {
+  console.log(req.params)
+  try {
+    const appointment = await Appointment.findByPk(req.params.appointment_id, {
+    })
+    res.send(appointment)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
-  GetAppointments
+  GetAppointments,
+  GetAppointmentById
 }
