@@ -7,6 +7,7 @@ const CarRouter = require('./CarRouter')
 Router.use('/customers', CustomerRouter)
 Router.use('/businesses', BusinessRouter)
 Router.use('/cars', CarRouter)
+Router.use('/appointments', AppointmentRouter)
 
 
 module.exports = Router
