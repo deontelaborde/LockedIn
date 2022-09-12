@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Business.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    passwordDigest: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
     address: DataTypes.STRING,
     city: DataTypes.STRING,

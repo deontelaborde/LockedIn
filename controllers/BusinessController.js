@@ -1,4 +1,5 @@
 const { Business } = require('../models')
+const middleware = require('../middleware')
 
 const GetBusinesses = async (req, res) => {
   try {
@@ -42,11 +43,41 @@ const DeleteBusiness = async (req, res) => {
     throw error
   }
 }
-
+const RegisterBusiness = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      password,
+      phoneNumber,
+      address,
+      city,
+      stateProvince,
+      country,
+      postalCode
+    } = req.body
+    let passwordDigest = await middleware.hashPassword(password)
+    const business = await Business.create({
+      name,
+      email,
+      passwordDigest,
+      phoneNumber,
+      address,
+      city,
+      stateProvince,
+      country,
+      postalCode
+    })
+    res.send(business)
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetBusinesses,
   GetBusinessById,
   UpdateBusiness,
-  DeleteBusiness
+  DeleteBusiness,
+  RegisterBusiness
 }
