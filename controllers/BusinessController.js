@@ -73,11 +73,36 @@ const RegisterBusiness = async (req, res) => {
     throw error
   }
 }
+const LoginBusiness = async (req, res) => {
+  try {
+    const business = await Business.findOne({
+      where: {
+         email: req.body.email
+      },
+      raw: true
+    })
+    if (
+      business &&
+      (await middleware.comparePassword(business.passwordDigest, req.body.password))
+    ) {
+      let payload = {
+        id: business.id,
+        email: business.email
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   GetBusinesses,
   GetBusinessById,
   UpdateBusiness,
   DeleteBusiness,
-  RegisterBusiness
+  RegisterBusiness,
+  LoginBusiness
 }

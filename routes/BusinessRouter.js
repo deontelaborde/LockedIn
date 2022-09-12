@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const controller = require('../controllers/BusinessController')
 
 Router.post('/register', controller.RegisterBusiness)
+Router.post('/login', controller.LoginBusiness)
 
 Router.get('/', controller.GetBusinesses)
 Router.get('/:business_id', controller.GetBusinessById)
