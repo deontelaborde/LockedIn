@@ -14,5 +14,11 @@ Router.get('/:customer_id', controller.GetCustomerById)
 Router.put('/:customer_id', controller.UpdateCustomer)
 Router.put('/:customer_id', controller.UpdateCustomer)
 Router.delete('/:customer_id', controller.DeleteCustomer)
+Router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CheckSession
+)
 
 module.exports = Router
