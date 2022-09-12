@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const CustomerRouter = require('./CustomerRouter')
 const BusinessRouter = require('./BusinessRouter')
 const CarRouter = require('./CarRouter')
+const AppointmentRouter = require('./AppointmentRouter')
 
 
 Router.use('/customers', CustomerRouter)

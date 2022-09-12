@@ -20,7 +20,22 @@ const GetAppointmentById = async (req, res) => {
   }
 }
 
+
+const UpdateAppointment= async (req, res) => {
+  try {
+    let appointmentId = parseInt(req.params.appointment_id)
+    let updatedAppointment = await Appointment.update(req.body, {
+      where: { id: appointmentId },
+      returning: true
+    })
+    res.send(updatedAppointment)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetAppointments,
-  GetAppointmentById
+  GetAppointmentById,
+  UpdateAppointment
 }
