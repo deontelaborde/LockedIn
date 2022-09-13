@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-const Home = () => {
+const Welcome = () => {
   return (
     <div className="home-page">
    
@@ -17,7 +17,9 @@ const Home = () => {
           </div>
           <div className="column">
             <h2> For Businesses</h2>
+            <Link to="businesses/register">
             <button>ENTER</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -25,4 +27,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Welcome

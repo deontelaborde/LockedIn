@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RegisterCustomer } from '../services/Authorize';
+import { RegisterBusiness } from '../services/Authorize';
 
-const CustomerRegister = () => {
+const BusinessRegister = () => {
   const initialState = {
-    lastName: '',
-    firstName: '',
+    
+    name: '',
     phoneNumber: '',
     email: '',
-    username: '',
     password: '',
     confirmPassword: '',
     address: '',
@@ -27,12 +26,10 @@ const CustomerRegister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await RegisterCustomer({
-      lastName: formValues.lastName,
-      firstName: formValues.firstName,
+    await RegisterBusiness({
+      name: formValues.name,
       phoneNumber: formValues.phoneNumber,
       email: formValues.email,
-      username: formValues.username,
       password: formValues.password,
       address: formValues.address,
       city: formValues.city,
@@ -48,28 +45,16 @@ const CustomerRegister = () => {
     <div className="register-form-container">
       <form className="register-form form" onSubmit={handleSubmit}>
         <div className="grid">
-          <div className="first-name">
-            <div className="firstName-label-container">
-              <label htmlFor="firstName">First Name</label>
+          
+          <div className="name">
+            <div className="name-label-container">
+              <label htmlFor="name">Business Name</label>
             </div>
             <input
               onChange={handleChange}
-              name="firstName"
+              name="name"
               type="text"
-              placeholder="First Name"
-              value={formValues.firstName}
-              required
-            />
-          </div>
-          <div className="last-name">
-            <div className="lastName-label-container">
-              <label htmlFor="lastName">Last Name</label>
-            </div>
-            <input
-              onChange={handleChange}
-              name="lastName"
-              type="text"
-              placeholder="Last Name"
+              placeholder="Name"
               value={formValues.lastName}
               required
             />
@@ -97,20 +82,6 @@ const CustomerRegister = () => {
               type="phoneNumber"
               placeholder="Phone Number"
               value={formValues.phoneNumber}
-              required
-            />
-          </div>
-
-          <div className="username">
-            <div className="username-label-container">
-              <label htmlFor="username">Username</label>
-            </div>
-            <input
-              onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="username"
-              value={formValues.username}
               required
             />
           </div>
@@ -211,4 +182,4 @@ const CustomerRegister = () => {
   )
 }
 
-export default CustomerRegister
+export default BusinessRegister

@@ -9,6 +9,16 @@ export const RegisterCustomer = async (data) => {
   }
 
 }
+
+export const RegisterBusiness = async (data) => {
+  try {
+    const res = await Client.post('/businesses/register', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+
+}
 export const LoginCustomer = async (data) => {
   try {
     const res = await Client.post('/customers/login', data);
