@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RegisterBusiness } from '../services/Authorize';
+import { RegisterBusiness } from '../services/Authorize'
+import { BusinessNav } from '../components/Nav'
 
 const BusinessRegister = () => {
   const initialState = {
-    
     name: '',
     phoneNumber: '',
     email: '',
@@ -42,10 +42,15 @@ const BusinessRegister = () => {
     navigate('businesses/login')
   }
   return (
+    <div>
+
+   
+    <header>
+        <BusinessNav />
+      </header>
     <div className="register-form-container">
       <form className="register-form form" onSubmit={handleSubmit}>
         <div className="grid">
-          
           <div className="name">
             <div className="name-label-container">
               <label htmlFor="name">Business Name</label>
@@ -163,7 +168,6 @@ const BusinessRegister = () => {
               required
             />
           </div>
-
         </div>
         <div className="submit-button-container">
           <button
@@ -178,6 +182,7 @@ const BusinessRegister = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   )
 }
