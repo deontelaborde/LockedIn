@@ -7,6 +7,7 @@ import {BASE_URL} from './globals'
 
 import Nav from './components/Nav'
 import Home from './pages/Home'
+import Register from './pages/CustomerRegister'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   const [authenticated,toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
-  let navigate = useNavigate()
+
 
 
   return (
@@ -26,6 +27,9 @@ function App() {
      <main>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route 
+            path="customers/register" element = {<Register />}
+          />
       </Routes>
      </main>
     </div>

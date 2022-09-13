@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RegisterCustomer } from '../services/Authorize';
 
-const RegisterCustomer = () => {
+const Register = () => {
   const initialState = {
     lastName: '',
     firstName: '',
@@ -211,4 +211,4 @@ const RegisterCustomer = () => {
   )
 }
 
-export default RegisterCustomer
+export default Register
