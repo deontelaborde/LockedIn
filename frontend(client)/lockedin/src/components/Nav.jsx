@@ -15,7 +15,9 @@ return (
 }
 
 export const BusinessNav = () => {
-  <header>
+  return (
+
+    <header>
     <nav>
       <h1>LockedIn</h1>
       <Link to="/businesses" className='link'><button className='nav-button'> Home </button></Link>
@@ -23,6 +25,7 @@ export const BusinessNav = () => {
       <Link to="/businesses/register" className='link'><button className='nav-button'> Sign Up </button></Link>
     </nav>
   </header>
+    )
 }
 
 
