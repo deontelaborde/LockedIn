@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from './globals'
 
-import Nav from './components/Nav'
 import Welcome from './pages/Welcome'
+import CustomerHome from './pages/CustomerHome'
 import CustomerRegister from './pages/CustomerRegister'
 import BusinessRegister from './pages/BusinessRegister'
 import CustomerLogin from './pages/CustomerLogin'
@@ -18,13 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <Nav />
-      </header>
-
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="/customers" element={<CustomerHome />} />
           <Route path="customers/register" element={<CustomerRegister />} />
           <Route path="businesses/register" element={<BusinessRegister />} />
           <Route
