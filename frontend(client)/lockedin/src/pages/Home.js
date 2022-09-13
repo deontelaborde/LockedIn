@@ -8,14 +8,14 @@ const Home = () => {
       <h3>Lock in an appointment with</h3>
       <h2>LockedIn</h2>
       <div className="home-grid">
-        <div class="row">
-          <div class="column">
+        <div className="row">
+          <div className="column">
             <h2>For Customers</h2>
             <Link to="customers/register">
             <button >ENTER</button>
             </Link>
           </div>
-          <div class="column">
+          <div className="column">
             <h2> For Businesses</h2>
             <button>ENTER</button>
           </div>

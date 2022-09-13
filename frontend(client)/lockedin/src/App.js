@@ -8,6 +8,7 @@ import {BASE_URL} from './globals'
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Register from './pages/CustomerRegister'
+import Login from './pages/CustomerLogin'
 
 
 function App() {
@@ -30,7 +31,16 @@ function App() {
         <Route 
             path="customers/register" element = {<Register />}
           />
-      </Routes>
+      <Route
+            path="/customers/login"
+            element={
+              <Login
+              setUser={setUser}
+              toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+            />
+            </Routes>
      </main>
     </div>
   );

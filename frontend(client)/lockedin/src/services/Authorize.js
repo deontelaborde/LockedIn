@@ -9,3 +9,12 @@ export const RegisterCustomer = async (data) => {
   }
 
 }
+export const LoginCustomer = async (data) => {
+  try {
+    const res = await Client.post('/customers/login', data);
+    localStorage.setItem('token', res.data.token);
+    return res.data.user;
+  } catch (error) {
+    throw error;
+  }
+};
