@@ -11,13 +11,13 @@ const Welcome = () => {
         <div className="row">
           <div className="column">
             <h2>For Customers</h2>
-            <Link to="customers/">
+            <Link to="/customers">
             <button >ENTER</button>
             </Link>
           </div>
           <div className="column">
             <h2> For Businesses</h2>
-            <Link to="businesses/">
+            <Link to="/businesses">
             <button>ENTER</button>
             </Link>
           </div>

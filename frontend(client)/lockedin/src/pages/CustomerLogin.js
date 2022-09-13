@@ -17,7 +17,7 @@ const CustomerLogin = (props) => {
     setFormValues({ username: '', password: '' });
     props.setUser(payload);
     props.toggleAuthenticated(true);
-    navigate('/');
+    navigate('/customers');
   };
 
   return (

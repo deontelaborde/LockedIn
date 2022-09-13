@@ -1,4 +1,4 @@
-import CustomerNav from "../components/CustomerNav"
+import {CustomerNav} from "../components/Nav"
 
 const CustomerHome = () => {
 
