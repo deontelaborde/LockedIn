@@ -1,17 +1,20 @@
 const Home = () => {
   return (
     <div className="home-page">
-      <h1>Welcome to LockedIn</h1>
-      <h3>Need more automotive customers?</h3>
-      <h3> Need more automotive experts?</h3>
-      <h3>Lock in an appointment with LockedIn</h3>
+   
+      <h4>Need more automotive customers?</h4>
+      <h4> Need more automotive experts?</h4>
+      <h3>Lock in an appointment with</h3>
+      <h2>LockedIn</h2>
       <div className="home-grid">
         <div class="row">
           <div class="column">
-            <h3>For Customers</h3>
+            <h2>For Customers</h2>
+            <button>ENTER</button>
           </div>
           <div class="column">
-            <h3> For Businesses</h3>
+            <h2> For Businesses</h2>
+            <button>ENTER</button>
           </div>
         </div>
       </div>
