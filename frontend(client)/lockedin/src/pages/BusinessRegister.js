@@ -39,7 +39,7 @@ const BusinessRegister = () => {
     })
     setFormValues(initialState)
 
-    navigate('/login')
+    navigate('businesses/login')
   }
   return (
     <div className="register-form-container">

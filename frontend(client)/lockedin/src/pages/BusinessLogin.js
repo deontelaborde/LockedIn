@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LoginCustomer } from '../services/Authorize';
+import { LoginBusiness } from '../services/Authorize';
 import { Link } from 'react-router-dom';
 
-const CustomerLogin = (props) => {
+const BusinessLogin = (props) => {
   const [formValues, setFormValues] = useState({ username: '', password: '' });
   let navigate = useNavigate();
 
@@ -13,8 +13,8 @@ const CustomerLogin = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = await LoginCustomer(formValues);
-    setFormValues({ username: '', password: '' });
+    const payload = await LoginBusiness(formValues);
+    setFormValues({ email: '', password: '' });
     props.setUser(payload);
     props.toggleAuthenticated(true);
     navigate('/');
@@ -26,10 +26,10 @@ const CustomerLogin = (props) => {
         <label htmlFor="username"></label>
         <input
           onChange={handleChange}
-          name="username"
+          name="email"
           type="text"
-          placeholder="username"
-          value={formValues.username}
+          placeholder="email"
+          value={formValues.email}
           required
         ></input>
         <label htmlFor="password"></label>
@@ -44,7 +44,7 @@ const CustomerLogin = (props) => {
 
         <button
           className="login-button button"
-          disabled={!formValues.username || !formValues.password}
+          disabled={!formValues.email || !formValues.password}
         >
           Login
         </button>
@@ -52,7 +52,7 @@ const CustomerLogin = (props) => {
       <h2>
         Don't have an account?
         <div className="signup-button-container">
-          <Link to="/customers/register" className="link">
+          <Link to="/businesses/register" className="link">
             <button className="signup-button button"> Sign Up </button>
           </Link>
         </div>
@@ -61,4 +61,4 @@ const CustomerLogin = (props) => {
   );
 };
 
-export default CustomerLogin;
+export default BusinessLogin;

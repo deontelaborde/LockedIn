@@ -19,6 +19,16 @@ export const RegisterBusiness = async (data) => {
   }
 
 }
+export const LoginBusiness = async (data) => {
+  try {
+    const res = await Client.post('/businesses/login', data);
+    localStorage.setItem('token', res.data.token);
+    return res.data.user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const LoginCustomer = async (data) => {
   try {
     const res = await Client.post('/customers/login', data);

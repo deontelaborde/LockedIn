@@ -42,7 +42,7 @@ const CustomerRegister = () => {
     })
     setFormValues(initialState)
 
-    navigate('/login')
+    navigate('customers/login')
   }
   return (
     <div className="register-form-container">

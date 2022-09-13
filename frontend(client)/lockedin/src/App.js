@@ -6,10 +6,11 @@ import axios from 'axios'
 import { BASE_URL } from './globals'
 
 import Nav from './components/Nav'
-import Welcome from './pages/Home'
+import Welcome from './pages/Welcome'
 import CustomerRegister from './pages/CustomerRegister'
 import BusinessRegister from './pages/BusinessRegister'
-import Login from './pages/CustomerLogin'
+import CustomerLogin from './pages/CustomerLogin'
+import BusinessLogin from './pages/BusinessLogin'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -29,7 +30,16 @@ function App() {
           <Route
             path="/customers/login"
             element={
-              <Login
+              <CustomerLogin
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
+          <Route
+            path="/businesses/login"
+            element={
+              <BusinessLogin
                 setUser={setUser}
                 toggleAuthenticated={toggleAuthenticated}
               />
