@@ -10,6 +10,13 @@ import Home from './pages/Home'
 
 
 function App() {
+
+  const [authenticated,toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+
+  let navigate = useNavigate()
+
+
   return (
     <div className="App">
       <header>
