@@ -6,6 +6,7 @@ export const Nav = ({ authenticated, user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <div>
+         <NavLink to="/profile" className='nav-link profile'>Profile</NavLink>
         <NavLink onClick={handleLogOut} to="/" className='nav-link logout'>Log Out</NavLink>
       </div>
     );

@@ -8,16 +8,14 @@ import { BASE_URL } from './globals'
 import Welcome from './pages/Welcome'
 import { Nav } from './components/Nav'
 import BusinessRegister from './pages/BusinessRegister'
-
+import CustomerHome from './pages/CustomerHome'
 import BusinessLogin from './pages/BusinessLogin'
 import { CheckSession } from './services/Authorize'
+import Profile from './pages/Profile'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-
-
-
 
   
   const handleLogOut = () => {
@@ -52,6 +50,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="/profile" element={<Profile/>} />
+
           <Route path="/register" element={<BusinessRegister />} />
           <Route
             path="/login"
@@ -62,6 +62,9 @@ function App() {
               />
             }
           />
+           <Route path="/customers" element={<CustomerHome 
+           setUser={setUser}
+           toggleAuthenticated={toggleAuthenticated}/>} />
         </Routes>
       </main>
     </div>

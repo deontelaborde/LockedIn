@@ -1,12 +1,10 @@
-import {CustomerNav} from "../components/Nav"
+
 
 const CustomerHome = () => {
 
-  return (<div className="home-page">
-    <header>
-      <CustomerNav />
-    </header>
-  </div>)
+  return <div className="home-page"></div>
 }
+
+
 
 export default CustomerHome
