@@ -13,6 +13,8 @@ import BusinessLogin from './pages/BusinessLogin'
 import { CheckSession } from './services/Authorize'
 import Profile from './pages/Profile'
 
+import Footer from './components/Footer'
+
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
@@ -93,6 +95,9 @@ function App() {
           />
         </Routes>
       </main>
+      <footer>
+      <Footer />
+      </footer>
     </div>
   )
 }
