@@ -1,11 +1,14 @@
-import {BusinessNav} from "../components/Nav"
+
 
 const BusinessHome = () => {
 
   return (<div className="home-page">
-    <header>
-      <BusinessNav />
-    </header>
+ 
+    <main>
+    
+      <h1>Welcome to LockedIn</h1>
+
+    </main>
   </div>)
 }
 

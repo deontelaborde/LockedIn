@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { LoginBusiness } from '../services/Authorize'
 import { Link } from 'react-router-dom'
 
-import { BusinessNav } from '../components/Nav'
-
 const BusinessLogin = (props) => {
-  const [formValues, setFormValues] = useState({ username: '', password: '' })
+  const [formValues, setFormValues] = useState({ email: '', password: '' })
   let navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -23,47 +21,42 @@ const BusinessLogin = (props) => {
   }
 
   return (
-    <div>
-      <header>
-        <BusinessNav />
-      </header>
-      <div className="login-form-container">
-        <form className="login-form form" onSubmit={handleSubmit}>
-          <label htmlFor="username"></label>
-          <input
-            onChange={handleChange}
-            name="email"
-            type="text"
-            placeholder="email"
-            value={formValues.email}
-            required
-          ></input>
-          <label htmlFor="password"></label>
-          <input
-            onChange={handleChange}
-            name="password"
-            type="password"
-            placeholder="password"
-            value={formValues.password}
-            required
-          ></input>
+    <div className="login-form-container">
+      <form className="login-form form" onSubmit={handleSubmit}>
+        <label htmlFor="username"></label>
+        <input
+          onChange={handleChange}
+          name="email"
+          type="text"
+          placeholder="email"
+          value={formValues.email}
+          required
+        ></input>
+        <label htmlFor="password"></label>
+        <input
+          onChange={handleChange}
+          name="password"
+          type="password"
+          placeholder="password"
+          value={formValues.password}
+          required
+        ></input>
 
-          <button
-            className="login-button button"
-            disabled={!formValues.email || !formValues.password}
-          >
-            Login
-          </button>
-        </form>
-        <h2>
-          Don't have an account?
-          <div className="signup-button-container">
-            <Link to="/businesses/register" className="link">
-              <button className="signup-button button"> Sign Up </button>
-            </Link>
-          </div>
-        </h2>
-      </div>
+        <button
+          className="login-button button"
+          disabled={!formValues.email || !formValues.password}
+        >
+          Login
+        </button>
+      </form>
+      <h2>
+        Don't have an account?
+        <div className="signup-button-container">
+          <Link to="/register" className="link">
+            <button className="signup-button button"> Sign Up </button>
+          </Link>
+        </div>
+      </h2>
     </div>
   )
 }

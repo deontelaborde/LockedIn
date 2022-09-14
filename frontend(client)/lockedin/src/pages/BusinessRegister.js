@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RegisterBusiness } from '../services/Authorize'
-import { BusinessNav } from '../components/Nav'
+
 
 const BusinessRegister = () => {
   const initialState = {
@@ -39,15 +39,10 @@ const BusinessRegister = () => {
     })
     setFormValues(initialState)
 
-    navigate('businesses/login')
+    navigate('/businesses/login')
   }
   return (
     <div>
-
-   
-    <header>
-        <BusinessNav />
-      </header>
     <div className="register-form-container">
       <form className="register-form form" onSubmit={handleSubmit}>
         <div className="grid">

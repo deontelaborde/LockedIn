@@ -6,37 +6,55 @@ import axios from 'axios'
 import { BASE_URL } from './globals'
 
 import Welcome from './pages/Welcome'
-import CustomerHome from './pages/CustomerHome'
-import BusinessHome from './pages/BusinessHome'
-import CustomerRegister from './pages/CustomerRegister'
+import { Nav } from './components/Nav'
 import BusinessRegister from './pages/BusinessRegister'
-import CustomerLogin from './pages/CustomerLogin'
+
 import BusinessLogin from './pages/BusinessLogin'
+import { CheckSession } from './services/Authorize'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
+
+
+
+  
+  const handleLogOut = () => {
+    setUser(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+    toggleAuthenticated(true)
+
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
+
+
   return (
     <div className="App">
+        <header>
+        <Nav
+          authenticated={authenticated}
+          user={user}
+          handleLogOut={handleLogOut}
+        />
+      </header>
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/customers" element={<CustomerHome />} />
-          <Route path="/businesses" element={<BusinessHome />} />
-          <Route path="customers/register" element={<CustomerRegister />} />
-          <Route path="businesses/register" element={<BusinessRegister />} />
+          <Route path="/register" element={<BusinessRegister />} />
           <Route
-            path="/customers/login"
-            element={
-              <CustomerLogin
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/businesses/login"
+            path="/login"
             element={
               <BusinessLogin
                 setUser={setUser}

@@ -1,32 +1,36 @@
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
-export const CustomerNav = () => {
-return (
-  <header>
-    <nav>
-      <h1>LockedIn</h1>
-      <Link to="/customers" className='link'><button className='nav-button'> Home </button></Link>
-      <Link to="/customers/login" className='link'><button className='nav-button'> Login </button></Link>
-      <Link to="/customers/register" className='link'><button className='nav-button'> Sign Up </button></Link>
-    </nav>
-  </header>
-)
+export const Nav = ({ authenticated, user, handleLogOut }) => {
 
-}
+  let userOptions;
+  if (user) {
+    userOptions = (
+      <div>
+        <NavLink onClick={handleLogOut} to="/" className='nav-link logout'>Log Out</NavLink>
+      </div>
+    );
+  }
 
-export const BusinessNav = () => {
+  const publicOptions = (
+    <div>
+      <NavLink to="/login" className='nav-link login'>Login</NavLink>
+    </div>
+  );
+
   return (
-
-    <header>
     <nav>
-      <h1>LockedIn</h1>
-      <Link to="/businesses" className='link'><button className='nav-button'> Home </button></Link>
-      <Link to="/businesses/login" className='link'><button className='nav-button'> Login </button></Link>
-      <Link to="/businesses/register" className='link'><button className='nav-button'> Sign Up </button></Link>
+      <NavLink to="/" className="nav-logo-link" >
+        <div className="logo-wrapper" alt="logo">
+          <h1 className='nav-title'>LockedIn</h1>
+        </div>
+      </NavLink>
+      <h1 className="name-display">Welcome{ user&& ` ${user.email}`}!</h1>
+      <div className="nav-right-links">
+        <NavLink to="/" className='nav-link home'>Home</NavLink>
+        {authenticated && user ? userOptions : publicOptions}
+      </div>
     </nav>
-  </header>
-    )
-}
+  );
 
-
+};
 

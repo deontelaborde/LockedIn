@@ -29,11 +29,11 @@ export const LoginBusiness = async (data) => {
   }
 };
 
-export const LoginCustomer = async (data) => {
+
+export const CheckSession = async () => {
   try {
-    const res = await Client.post('/customers/login', data);
-    localStorage.setItem('token', res.data.token);
-    return res.data.user;
+    const res = await Client.get('/businesses/session');
+    return res.data;
   } catch (error) {
     throw error;
   }
