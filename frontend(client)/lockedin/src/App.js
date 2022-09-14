@@ -16,16 +16,24 @@ import Profile from './pages/Profile'
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-
   const [customers, setCustomers] = useState([])
+  const [selectedCustomer, setselectedCustomer] = useState([])
 
-  const getCustomer = async () => {
+
+  const getCustomers = async () => {
     const res = await axios.get(`${BASE_URL}/customers`)
     setCustomers(res.data)
     console.log(res.data)
   }
+  
+  const selectCustomer = (selected) => {
+    setSelectedCustomer(selected)
+    navigate(`/customer/${selected.id}`)
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }
   useEffect(() => {
-    getCustomer()
+    getCustomers()
+    
   }, [])
 
   const handleLogOut = () => {
@@ -77,7 +85,7 @@ function App() {
             path="/customers"
             element={
               <CustomerHome
-              customers={customers}
+              customers={customers} cars={selectCustomer}
                 setUser={setUser}
                 toggleAuthenticated={toggleAuthenticated}
               />

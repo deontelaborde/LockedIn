@@ -7,8 +7,9 @@ const CustomerHome = (props) => {
           <div className="customer-card" key={customer.id}>
             <h4>First Name: {customer.firstName}</h4>
             <h4>Last Name: {customer.lastName}</h4>
-            <h4>email: {customer.email}</h4>
-            <h4>phoneNumber: {customer.phoneNumber}</h4>
+
+            <h4>Email: {customer.email}</h4>
+            <h4>Phone Number: {customer.phoneNumber}</h4>
             <h4>
               Address: {customer.address} {customer.city},
               {customer.stateProvince} {customer.postalCode}
