@@ -5,19 +5,18 @@ const CustomerHome = (props) => {
       <div className="customer-grid">
         {props.customers.map((customer) => (
           <div className="customer-card" key={customer.id}>
-            <h4>First Name: {customer.firstName}</h4>
-            <h4>Last Name: {customer.lastName}</h4>
+            <div onClick={() => props.selectCustomer(customer)}>
+            <h4>{customer.firstName} {customer.lastName}</h4>
+            </div>
+            <h4></h4>
 
-            <h4>Email: {customer.email}</h4>
-            <h4>Phone Number: {customer.phoneNumber}</h4>
-            <h4>
-              Address: {customer.address} {customer.city},
-              {customer.stateProvince} {customer.postalCode}
-            </h4>
-            <h4>{customer.country}</h4>
+           
             
           </div>
         ))}
+      </div>
+      <div>
+        
       </div>
     </div>
   )
