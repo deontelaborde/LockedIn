@@ -17,14 +17,30 @@ const CustomerDetails = (props) => {
         </h4>
         <h4>{props.selectedCustomer.country}</h4>
       </div>
-      <h1 className="customer-title">Cars</h1>
-      {props.selectedCustomer.Cars.map((car) => (
-          <div className="car" key={car.id}>
-            <h3>{car.year} {car.make} {car.model}</h3>
 
-          </div>
+      <h1 className="customer-title">Cars</h1>
+      {props.selectedCustomer.Cars.map((car, index) => (
+        <div className="car" key={car.id}>
+          <h3>
+            {car.year} {car.make} {car.model}
+          </h3>
+          <button
+            className="edit-button button"
+            onClick={() => {
+              props.editCar(
+                {
+                  id: car.id,
+                  rating: car.rating,
+                  body: car.body
+                },
+                index
+              )
+            }}
+          >
+            Edit
+          </button>
+        </div>
       ))}
-           
     </section>
   )
 }

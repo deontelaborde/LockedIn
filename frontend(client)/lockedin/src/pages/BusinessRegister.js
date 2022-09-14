@@ -39,7 +39,7 @@ const BusinessRegister = () => {
     })
     setFormValues(initialState)
 
-    navigate('/businesses/login')
+    navigate('/login')
   }
   return (
     <div>
