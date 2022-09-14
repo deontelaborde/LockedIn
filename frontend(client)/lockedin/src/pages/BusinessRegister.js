@@ -124,6 +124,19 @@ const BusinessRegister = () => {
               required
             />
           </div>
+          <div className="city">
+            <div className="city-label-container">
+              <label htmlFor="city">City</label>
+            </div>
+            <input
+              onChange={handleChange}
+              name="city"
+              type="city"
+              placeholder="City"
+              value={formValues.city}
+              required
+            />
+          </div>
           <div className="stateProvince">
             <div className="stateprovince-label-container">
               <label htmlFor="stateprovince">State/Province</label>
@@ -139,7 +152,7 @@ const BusinessRegister = () => {
           </div>
           <div className="country">
             <div className="country-label-container">
-              <label htmlFor="country">State/Province</label>
+              <label htmlFor="country">Country</label>
             </div>
             <input
               onChange={handleChange}
@@ -158,7 +171,7 @@ const BusinessRegister = () => {
               onChange={handleChange}
               name="postalCode"
               type="postalCode"
-              placeholder="postalCode"
+              placeholder="Postal Code"
               value={formValues.postalCode}
               required
             />

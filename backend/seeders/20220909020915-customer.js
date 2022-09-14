@@ -10,8 +10,6 @@ module.exports = {
           firstName: "John",
           phoneNumber: "(123)-456-7890",
           email: "jb@jb.com",
-          username: "jbrown",
-          password: "123",
           address: "123 Test Ave",
           city: "TestCity",
           stateProvince: "NY",

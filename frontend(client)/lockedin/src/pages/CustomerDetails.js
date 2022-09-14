@@ -37,8 +37,8 @@ const CustomerDetails = (props) => {
                   color: car.color
                 },
                 index
-                )
-              }}
+              )
+            }}
           >
             Edit
           </button>
@@ -50,13 +50,15 @@ const CustomerDetails = (props) => {
           >
             Delete
           </button>
+          <div>
             <CarForm
               user={props.user}
               authenticated={props.authenticated}
               handleCarChange={props.handleCarChange}
               handleCarSubmit={props.handleCarSubmit}
-              carFomState={props.carFromState}
+              carFromState={props.carFromState}
             />
+          </div>
         </div>
       ))}
     </section>

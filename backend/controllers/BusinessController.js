@@ -9,7 +9,10 @@ const GetBusinesses = async (req, res) => {
     throw error
   }
 }
-
+const CheckSession = async (req, res) => {
+  const { payload } = res.locals
+  res.send(payload)
+}
 const GetBusinessById = async (req, res) => {
   console.log(req.params)
   try {
@@ -99,11 +102,13 @@ const LoginBusiness = async (req, res) => {
   }
 }
 
+
 module.exports = {
   GetBusinesses,
   GetBusinessById,
   UpdateBusiness,
   DeleteBusiness,
   RegisterBusiness,
-  LoginBusiness
+  LoginBusiness,
+  CheckSession
 }

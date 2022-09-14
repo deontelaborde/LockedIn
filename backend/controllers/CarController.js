@@ -18,6 +18,31 @@ const GetCarById = async (req, res) => {
     throw error
   }
 }
+const CreateCar = async (req, res) => {
+  try {
+    let customer_id = parseInt(req.params.customer_id);
+
+    const {
+    year,
+    make,
+    model,
+    color,
+
+    
+  } = req.body
+  
+  const car = await Car.create({
+    year,
+    make,
+    model,
+    color,
+    customer_id
+  })
+  res.send(car)
+} catch (error) {
+  throw error
+}
+}
 const UpdateCar = async (req, res) => {
   try {
     let carId = parseInt(req.params.car_id)
@@ -45,5 +70,6 @@ module.exports = {
   GetCars,
   GetCarById,
   UpdateCar,
-  DeleteCar
+  DeleteCar,
+  CreateCar
 }

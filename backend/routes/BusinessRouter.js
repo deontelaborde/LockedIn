@@ -7,6 +7,13 @@ Router.get('/', controller.GetBusinesses)
 Router.post('/register', controller.RegisterBusiness)
 Router.post('/login', controller.LoginBusiness)
 
+
+Router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CheckSession)
+  
 Router.get('/:business_id', controller.GetBusinessById)
 Router.put(
   '/:business_id',

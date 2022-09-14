@@ -157,7 +157,7 @@ function App() {
               }
             />
             <Route
-              path="/customers/:id"
+              path="/customers/:customer_id"
               element={
                 <CustomerDetails
                   selectedCustomer={selectedCustomer}

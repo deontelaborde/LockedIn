@@ -43,7 +43,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/deontelaborde/"
+                href="https://www.linkedin.com/in/deonte-laborde/"
                
                 target="_blank" 
                 rel="noopener noreferrer"

@@ -1,5 +1,4 @@
 const { Customer, Car } = require('../models')
-const middleware = require('../middleware')
 
 const GetCustomers = async (req, res) => {
   try {
@@ -44,29 +43,25 @@ const DeleteCustomer = async (req, res) => {
   }
 }
 
-const RegisterCustomer = async (req, res) => {
+const AddCustomer = async (req, res) => {
   try {
-    const {
+     const {
       lastName,
       firstName,
       phoneNumber,
       email,
-      username,
-      password,
       address,
       city,
       stateProvince,
       country,
       postalCode
     } = req.body
-    let passwordDigest = await middleware.hashPassword(password)
+    
     const customer = await Customer.create({
       lastName,
       firstName,
       phoneNumber,
       email,
-      username,
-      passwordDigest,
       address,
       city,
       stateProvince,
@@ -78,48 +73,14 @@ const RegisterCustomer = async (req, res) => {
     throw error
   }
 }
-const LoginCustomer = async (req, res) => {
-  try {
-    const customer = await Customer.findOne({
-      where: {
-        // [Op.or]: [
-        // { email: req.body.email },
-        username: req.body.username
-        // ]
-      },
-      raw: true
-    })
-    if (
-      customer &&
-      (await middleware.comparePassword(
-        customer.passwordDigest,
-        req.body.password
-      ))
-    ) {
-      let payload = {
-        id: customer.id,
-        username: customer.username,
-        email: customer.email
-      }
-      let token = middleware.createToken(payload)
-      return res.send({ user: payload, token })
-    }
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (error) {
-    throw error
-  }
-}
-const CheckSession = async (req, res) => {
-  const { payload } = res.locals
-  res.send(payload)
-}
 
 module.exports = {
   GetCustomers,
   GetCustomerById,
   UpdateCustomer,
   DeleteCustomer,
-  RegisterCustomer,
-  LoginCustomer,
-  CheckSession
+  AddCustomer,
+
+  
+
 }

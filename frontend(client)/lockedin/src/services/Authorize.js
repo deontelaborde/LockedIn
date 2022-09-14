@@ -11,7 +11,7 @@ export const RegisterCustomer = async (data) => {
 }
 export const CreateCar = async (data) => {
   try {
-    const res = await Client.post('/reviews/:movie_id/:user_id', data);
+    const res = await Client.post('/cars/:customer_id', data);
     return res.data;
   } catch (error) {
     throw error;
