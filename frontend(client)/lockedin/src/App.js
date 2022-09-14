@@ -35,6 +35,7 @@ function App() {
   const selectCustomer = (selected) => {
     setSelectedCustomer(selected)
     navigate(`/customers/${selected.id}`)
+    console.log(selected)
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }
 
