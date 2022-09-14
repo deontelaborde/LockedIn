@@ -17,7 +17,17 @@ function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
-  
+  const [customers, setCustomers] = useState([])
+
+  const getCustomer = async () => {
+    const res = await axios.get(`${BASE_URL}/customers`)
+    setCustomers(res.data)
+    console.log(res.data)
+  }
+  useEffect(() => {
+    getCustomer()
+  }, [])
+
   const handleLogOut = () => {
     setUser(null)
     toggleAuthenticated(false)
@@ -27,7 +37,6 @@ function App() {
     const user = await CheckSession()
     setUser(user)
     toggleAuthenticated(true)
-
   }
 
   useEffect(() => {
@@ -37,10 +46,9 @@ function App() {
     }
   }, [])
 
-
   return (
     <div className="App">
-        <header>
+      <header>
         <Nav
           authenticated={authenticated}
           user={user}
@@ -50,7 +58,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route
+            path="/profile"
+            element={<Profile user={user} authenticated={authenticated} />}
+          />
 
           <Route path="/register" element={<BusinessRegister />} />
           <Route
@@ -62,9 +73,16 @@ function App() {
               />
             }
           />
-           <Route path="/customers" element={<CustomerHome 
-           setUser={setUser}
-           toggleAuthenticated={toggleAuthenticated}/>} />
+          <Route
+            path="/customers"
+            element={
+              <CustomerHome
+              customers={customers}
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
         </Routes>
       </main>
     </div>
