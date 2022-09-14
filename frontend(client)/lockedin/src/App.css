@@ -73,6 +73,7 @@ a:hover.nav-logo-link {
 
 .row {
   display: flex;
+  justify-content:space-between;
 }
 
 .column {
@@ -81,7 +82,7 @@ a:hover.nav-logo-link {
 
 .customer-grid {
 
-  margin-top: 25px;
+  margin: 35px 0px;
   display: flex;
   width: 100vw;
   flex-wrap: wrap;
@@ -89,17 +90,73 @@ a:hover.nav-logo-link {
   align-items: center;
 }
 
+
 .customer-card {
   height: 100%;
   margin: 15px;
-  overflow: hidden;
   border-radius: 2.5rem;
   transition: transform 300ms;
+
+  box-shadow: 0 4px 5px 3px rgba(136, 53, 53, 0.459) ;
+  opacity: 0.6 ;
+  transition: all 0.5s ease 0s ;
+  height: 100% ;
+}
+.customer-card :hover {
+  transform: scale(1.1) ;
+  overflow: hidden ;
+ 
 }
 
 a {
   color: white;
   text-decoration: none;
   font-size: 24px;
+}
+
+.footer {
+  background-color: #282c34;
+  bottom: 0 ;
+  padding-top: 10px ;
+  padding-bottom: 8px  ;
+  
+}
+.footer-copywright {
+  text-align: center ;
+}
+
+.footer-body {
+  z-index: 1;
+  text-align: center ;
+}
+
+@media (max-width: 767px) {
+  .footer-copywright {
+    text-align: center ;
+  }
+
+  .footer-body {
+    text-align: center ;
+    
+  }
+}
+
+.footer h3 {
+  font-size: 1em;
+  color: white ;
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em ;
+}
+.footer-icons {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em ;
+  padding: 0 ;
+}
+
+.social-icons {
+  text-align: right;
+  display: inline-block ;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 

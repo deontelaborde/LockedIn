@@ -13,13 +13,13 @@ function Footer() {
   return (
     <Container fluid className="footer">
       <Row>
-        <Col md="4" className="footer-copywright">
+        <Col md="3" className="footer-copyright">
           <h3>Designed and Developed by Deonte LaBorde</h3>
         </Col>
-        <Col md="4" className="footer-copywright">
+        <Col md="3" className="footer-copyright">
           <h3>Copyright © {year} DL</h3>
         </Col>
-        <Col md="4" className="footer-body">
+        <Col md="3" className="footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a
