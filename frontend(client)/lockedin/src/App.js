@@ -8,10 +8,17 @@ import { BASE_URL } from './globals'
 import Welcome from './pages/Welcome'
 import { Nav } from './components/Nav'
 import BusinessRegister from './pages/BusinessRegister'
+import CarForm from './components/CarForm'
 import CustomerHome from './pages/CustomerHome'
 import CustomerDetails from './pages/CustomerDetails'
 import BusinessLogin from './pages/BusinessLogin'
-import { CheckSession } from './services/Authorize'
+import EditCar from './pages/EditCar'
+import {
+  CheckSession,
+  CreateCar,
+  DestroyCar,
+  UpdateCar
+} from './services/Authorize'
 import Profile from './pages/Profile'
 
 import Footer from './components/Footer'
@@ -21,6 +28,8 @@ function App() {
   const [user, setUser] = useState(null)
   const [customers, setCustomers] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [car, setCar] = useState(null)
+  const [editing, setEditing] = useState(false)
 
   let navigate = useNavigate()
   const getCustomers = async () => {
@@ -57,61 +66,130 @@ function App() {
     }
   }, [])
 
-  return (
-    <div className="App">
-      <header>
-        <Nav
-          authenticated={authenticated}
-          user={user}
-          handleLogOut={handleLogOut}
-        />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route
-            path="/profile"
-            element={<Profile user={user} authenticated={authenticated} />}
-          />
+  const initialCarState = {
+    year: '',
+    make: '',
+    model: '',
+    color: '',
+    customer_id: ''
+  }
 
-          <Route path="/register" element={<BusinessRegister />} />
-          <Route
-            path="/login"
-            element={
-              <BusinessLogin
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
+  const [carFromState, setCarFormState] = useState(initialCarState)
+
+  const handleCarChange = (event) => {
+    setCarFormState({
+      ...carFromState,
+      [event.target.id]: event.target.value,
+      customer_id: customers.id
+    })
+  }
+  const handleCarSubmit = async (event) => {
+    event.preventDefault()
+    if (editing) {
+      await UpdateCar(carFromState)
+      setCarFormState(initialCarState)
+      let modifiedCustomer = selectedCustomer
+      navigate('/')
+      window.location.reload()
+    } else {
+      await CreateCar({
+        year: carFromState.year,
+        make: carFromState.make,
+        model: carFromState.model,
+        color: carFromState.color,
+        customer_id: selectedCustomer.id
+      })
+      let modifiedCustomer = selectedCustomer
+      modifiedCustomer.Cars.push(carFromState)
+      navigate('/')
+      window.location.reload()
+    }
+  }
+    const editCar = (car, index) => {
+      setEditing(true)
+      setCar(car)
+      setCarFormState(car)
+      navigate('/cars/edit', { state: { index: index } })
+    }
+
+    const deleteCar = async (car_id) => {
+      await DestroyCar(car_id)
+      navigate('/')
+      window.location.reload()
+    }
+
+    return (
+      <div className="App">
+        <header>
+          <Nav
+            authenticated={authenticated}
+            user={user}
+            handleLogOut={handleLogOut}
           />
-          <Route
-            path="/customers"
-            element={
-              <CustomerHome
-                customers={customers}
-                selectCustomer={selectCustomer}
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/customers/:id"
-            element={
-              <CustomerDetails
-                selectedCustomer={selectedCustomer}
-                authenticated={authenticated}
-                user={user}
-              />
-            }
-          />
-        </Routes>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
-  )
-}
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route
+              path="/profile"
+              element={<Profile user={user} authenticated={authenticated} />}
+            />
+
+            <Route path="/register" element={<BusinessRegister />} />
+            <Route
+              path="/login"
+              element={
+                <BusinessLogin
+                  setUser={setUser}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              }
+            />
+            <Route
+              path="/customers"
+              element={
+                <CustomerHome
+                  customers={customers}
+                  selectCustomer={selectCustomer}
+                  setUser={setUser}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              }
+            />
+            <Route
+              path="/customers/:id"
+              element={
+                <CustomerDetails
+                  selectedCustomer={selectedCustomer}
+                  authenticated={authenticated}
+                  user={user}
+                  handleCarChange={handleCarChange}
+                  handleCarSubmit={handleCarSubmit}
+                  carFromState={carFromState}
+                  deleteCar={deleteCar}
+                  editCar={editCar}
+                />
+              }
+            />
+           <Route path="/car" element={<CarForm />} />
+            <Route
+              path="/cars/edit"
+              element={
+                <EditCar
+                  car={car}
+                  reviewFromState={carFromState}
+                  onChange={handleCarChange}
+                  onSubmit={handleCarSubmit}
+                />
+              }
+            />
+          </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    )
+  }
 
 export default App

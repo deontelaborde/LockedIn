@@ -1,3 +1,4 @@
+import CarForm from '../components/CarForm'
 const CustomerDetails = (props) => {
   return (
     <section className="customer-page">
@@ -30,15 +31,32 @@ const CustomerDetails = (props) => {
               props.editCar(
                 {
                   id: car.id,
-                  rating: car.rating,
-                  body: car.body
+                  year: car.year,
+                  make: car.make,
+                  model: car.model,
+                  color: car.color
                 },
                 index
-              )
-            }}
+                )
+              }}
           >
             Edit
           </button>
+          <button
+            className="delete-button button"
+            onClick={() => {
+              props.deleteCar(car.id)
+            }}
+          >
+            Delete
+          </button>
+            <CarForm
+              user={props.user}
+              authenticated={props.authenticated}
+              handleCarChange={props.handleCarChange}
+              handleCarSubmit={props.handleCarSubmit}
+              carFomState={props.carFromState}
+            />
         </div>
       ))}
     </section>
